@@ -1,6 +1,6 @@
 {
   "name": "@fidaktk/ids",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Generate unique IDs including ObjectId, UUID, CUID, and SlugID – no MongoDB driver needed.",
   "type": "module",
   "main": "dist/index.js",
