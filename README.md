@@ -1,85 +1,75 @@
 # @fidaktk/ids
 
-A simple and powerful utility library to generate unique IDs:
-- MongoDB-style `ObjectID`
-- UUID v4 & v5
-- CUID
-- SlugID
-
-> Built with TypeScript. Zero dependencies. Fully tested.
+A compact, fast, and dependency-light ID generator library for Node.js and browser environments.  
+Supports `ObjectID`, `UUID v4/v5`, `CUID2`, and `slugid` – **without the MongoDB driver**.
 
 ---
 
 ## ✨ Features
 
-- ✅ `ObjectID` class (with `.toHexString()`, `.equals()`, `.getTimestamp()`)
-- ✅ `uuidv4()` — RFC4122 v4 compliant
-- ✅ `uuidv5()` — deterministic based on name + namespace
-- ✅ `cuidId()` — collision-resistant CUID
-- ✅ `slug()` — short human-friendly CUID
+- MongoDB-compatible `ObjectID` generator
+- UUID v4 and v5 (RFC compliant)
+- Collision-resistant `cuid2` (recommended)
+- URL-safe short `slugid`
+- Built-in TypeScript types
+- Fully tree-shakeable and ESM-first
 
 ---
 
-## 📦 Install
+## 📦 Installation
 
 ```bash
 npm install @fidaktk/ids
-```
-
-or
-
-```bash
-yarn add @fidaktk/ids
 ```
 
 ---
 
 ## 🚀 Usage
 
+### Modern ESM Import (Recommended)
+
 ```ts
 import { ObjectID, uuidv4, uuidv5, cuidId, slug } from '@fidaktk/ids';
 
-// ObjectID (MongoDB-style)
-const id = new ObjectID();
-console.log(id.toHexString(), id.getTimestamp());
+// Mongo-like ObjectID
+const mongoId = new ObjectID().toHexString();
 
 // UUID v4
-console.log(uuidv4());
+const uuid = uuidv4();
 
 // UUID v5
-console.log(uuidv5('user@example.com', '6ba7b810-9dad-11d1-80b4-00c04fd430c8'));
+const namedUuid = uuidv5('example.com', '6ba7b810-9dad-11d1-80b4-00c04fd430c8');
 
-// CUID
-console.log(cuidId());
+// CUID2
+const cuid = cuidId();
 
-// SlugID
-console.log(slug());
+// Slug (short URL-safe ID)
+const shortSlug = slug();
 ```
 
 ---
 
-## 🔍 API
+## ⚠️ CommonJS Compatibility
 
-| Export         | Type     | Description |
-|----------------|----------|-------------|
-| `new ObjectID()` | `ObjectID` class | 12-byte Mongo-compatible ID with helper methods |
-| `uuidv4()`     | `string` | Random UUID v4 |
-| `uuidv5(name, namespace)` | `string` | Deterministic UUID v5 |
-| `cuidId()`     | `string` | Collision-resistant short ID |
-| `slug()`       | `string` | Short, unique slug-style ID |
+This package is **ESM-only**.  
+To use in CommonJS (e.g. `require()`), use a dynamic import:
+
+```js
+const ids = await import('@fidaktk/ids');
+const id = new ids.ObjectID().toHexString();
+```
 
 ---
 
-## 🧪 Testing
+## 🧪 Available Generators
 
-```bash
-npm test
-```
-
-Includes test coverage for:
-- ObjectID generation & equality
-- UUIDv4 & UUIDv5
-- CUID & slug formats
+| Name      | Description                    | Example                        |
+|-----------|--------------------------------|--------------------------------|
+| ObjectID  | MongoDB-style ID               | `64ee4ba75a37dbed0e170d51`     |
+| uuidv4    | Random UUID                    | `0f770978-f071-4a1c-b19b-...`  |
+| uuidv5    | Name-based UUID (RFC 4122)     | `0ce4a4e4-0c3e-5c42-...`       |
+| cuidId    | Secure, k-sortable CUID2       | `ckr1jmrhf00002q51k14gyy49`    |
+| slug      | Short, URL-safe ID             | `7d4b9eqgRFe1ziTC2kHGVB`       |
 
 ---
 
