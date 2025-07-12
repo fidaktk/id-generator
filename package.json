@@ -1,11 +1,13 @@
 {
   "name": "@fidaktk/ids",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate unique IDs including ObjectId, UUID, CUID, and SlugID – no MongoDB driver needed.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "jest --config jest.config.mjs"
@@ -22,7 +24,7 @@
   "author": "Fida ur Rehman",
   "license": "MIT",
   "dependencies": {
-    "cuid": "^3.0.0",
+    "@paralleldrive/cuid2": "^2.2.2",
     "slugid": "^5.0.1",
     "uuid": "^11.1.0"
   },

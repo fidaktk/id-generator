@@ -1,0 +1,19 @@
+
+# Ignore test files
+test/
+__tests__/
+coverage/
+
+# Ignore source TypeScript files
+src/
+*.ts
+!dist/**/*.d.ts
+
+# Ignore config files
+tsconfig.json
+jest.config.*
+.eslintrc.*
+.prettierrc
+*.log
+.vscode/
+.nyc_output/

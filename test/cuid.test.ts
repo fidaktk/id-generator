@@ -1,7 +1,7 @@
 import { cuidId, slug } from '../src/cuid';
 
-test('cuid starts with c', () => {
-  expect(cuidId()).toMatch(/^c[a-z0-9]{24,}$/);
+test('cuid2 has 24-character length', () => {
+  expect(cuidId()).toHaveLength(24);
 });
 
 test('slug is short and URL-safe', () => {
