@@ -1,4 +1,5 @@
 import { getRandomBytes } from './crypto';
+import { Buffer } from 'buffer';
 
 const MACHINE_ID = getRandomBytes(3);
 let counter = getRandomBytes(3);

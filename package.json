@@ -1,6 +1,6 @@
 {
   "name": "@fidaktk/ids",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -31,11 +31,13 @@
   "license": "MIT",
   "dependencies": {
     "@paralleldrive/cuid2": "^2.2.2",
+    "buffer": "^6.0.3",
     "slugid": "^5.0.1",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.13",
     "jest": "^30.0.4",
     "ts-jest": "^29.4.0",
     "typescript": "^5.4.5"

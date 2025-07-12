@@ -1,2 +1,7 @@
-import { webcrypto as crypto } from 'node:crypto';
-export const getRandomBytes = (length: number) => Buffer.from(crypto.getRandomValues(new Uint8Array(length)));
+import { Buffer } from 'buffer';
+
+export function getRandomBytes(length: number): Buffer {
+  const buf = Buffer.alloc(length);
+  crypto.getRandomValues(buf);
+  return buf;
+}
