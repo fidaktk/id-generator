@@ -1,18 +1,23 @@
 # @fidaktk/ids
 
-A compact, fast, and dependency-light ID generator library for Node.js and browser environments.  
-Supports `ObjectID`, `UUID v4/v5`, `CUID2`, and `slugid` – **without the MongoDB driver**.
+A lightweight, dependency-efficient ID generator package for Node.js and web projects.  
+Supports MongoDB-compatible `ObjectID`, UUIDv4/v5, CUID2, and URL-safe slug IDs — all without requiring the full MongoDB driver.
+
+✅ ESM & CJS compatible  
+✅ Zero external dependencies for ObjectID  
+✅ Fully tested  
+✅ Browser-compatible  
 
 ---
 
 ## ✨ Features
 
-- MongoDB-compatible `ObjectID` generator
-- UUID v4 and v5 (RFC compliant)
-- Collision-resistant `cuid2` (recommended)
-- URL-safe short `slugid`
-- Built-in TypeScript types
-- Fully tree-shakeable and ESM-first
+- 🧠 MongoDB-like `ObjectID` — no driver required
+- 🔐 UUID v4 & v5 (namespaced)
+- ⚡ CUID2 — modern, collision-resistant IDs
+- 🌀 Slug-friendly IDs via `slugid`
+- ✅ TypeScript ready
+- 📦 Works with both CommonJS and ESM
 
 ---
 
@@ -20,59 +25,96 @@ Supports `ObjectID`, `UUID v4/v5`, `CUID2`, and `slugid` – **without the Mongo
 
 ```bash
 npm install @fidaktk/ids
+# or
+yarn add @fidaktk/ids
 ```
 
 ---
 
 ## 🚀 Usage
 
-### Modern ESM Import (Recommended)
+### ES Modules
 
 ```ts
 import { ObjectID, uuidv4, uuidv5, cuidId, slug } from '@fidaktk/ids';
 
-// Mongo-like ObjectID
-const mongoId = new ObjectID().toHexString();
-
-// UUID v4
-const uuid = uuidv4();
-
-// UUID v5
-const namedUuid = uuidv5('example.com', '6ba7b810-9dad-11d1-80b4-00c04fd430c8');
-
-// CUID2
+const oid = new ObjectID().toHexString();
+const uid = uuidv4();
+const namedUUID = uuidv5('my-namespace', uuidv5.URL);
 const cuid = cuidId();
+const shortSlug = slug();
+```
 
-// Slug (short URL-safe ID)
+### CommonJS
+
+```js
+const { ObjectID, uuidv4, uuidv5, cuidId, slug } = require('@fidaktk/ids');
+
+const oid = new ObjectID().toHexString();
+const uid = uuidv4();
+const namedUUID = uuidv5('my-namespace', uuidv5.URL);
+const cuid = cuidId();
 const shortSlug = slug();
 ```
 
 ---
 
-## ⚠️ CommonJS Compatibility
+## 🧪 API Reference
 
-This package is **ESM-only**.  
-To use in CommonJS (e.g. `require()`), use a dynamic import:
+### `ObjectID`
+- `new ObjectID()`
+- `new ObjectID(hexString)`
+- `ObjectID.isValid(id)`
+- `ObjectID.createFromHexString(hex)`
+- `ObjectID.createFromTime(time)`
+- `.toHexString()`
+- `.getTimestamp()`
+- `.equals(other)`
 
-```js
-const ids = await import('@fidaktk/ids');
-const id = new ids.ObjectID().toHexString();
+### `uuidv4()`
+- Generates a random UUID v4.
+
+### `uuidv5(name, namespace)`
+- Deterministic UUID v5 from name + namespace.
+
+### `cuidId()`
+- Generates a CUID2-compliant ID.
+
+### `slug()`
+- Short, URL-friendly ID (slugid-compatible).
+
+---
+
+## 🔧 Compatibility
+
+| Platform              | Supported |
+|-----------------------|-----------|
+| Node.js               | ✅        |
+| Browser (via bundler) | ✅        |
+| CommonJS (`require`)  | ✅        |
+| ESM (`import`)        | ✅        |
+
+---
+
+## 📁 Project Structure
+
+```
+.
+├── src/
+│   ├── objectid.ts
+│   ├── uuid.ts
+│   ├── cuid.ts
+│   ├── index.ts
+├── dist/
+├── test/
+├── package.json
+├── tsconfig.json
+├── jest.config.mjs
+└── README.md
 ```
 
 ---
 
-## 🧪 Available Generators
+## 📜 License
 
-| Name      | Description                    | Example                        |
-|-----------|--------------------------------|--------------------------------|
-| ObjectID  | MongoDB-style ID               | `64ee4ba75a37dbed0e170d51`     |
-| uuidv4    | Random UUID                    | `0f770978-f071-4a1c-b19b-...`  |
-| uuidv5    | Name-based UUID (RFC 4122)     | `0ce4a4e4-0c3e-5c42-...`       |
-| cuidId    | Secure, k-sortable CUID2       | `ckr1jmrhf00002q51k14gyy49`    |
-| slug      | Short, URL-safe ID             | `7d4b9eqgRFe1ziTC2kHGVB`       |
-
----
-
-## 📄 License
-
-MIT © [Fida ur Rehman](https://github.com/fidaktk)
+MIT License © [Fida ur Rehman](https://github.com/fidaktk)

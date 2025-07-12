@@ -1,8 +1,7 @@
-import { randomBytes } from 'crypto';
-import { Buffer } from 'buffer';
+import { getRandomBytes } from './crypto';
 
-const MACHINE_ID = randomBytes(3);
-let counter = randomBytes(3);
+const MACHINE_ID = getRandomBytes(3);
+let counter = getRandomBytes(3);
 
 const PID = typeof process !== 'undefined' && typeof process.pid === 'number'
   ? process.pid % 0xffff
