@@ -1,4 +1,4 @@
-import { ObjectId } from '../src/ObjectId';
+import { ObjectId } from '../src/objectid';
 import { Buffer } from 'buffer';
 
 describe('ObjectId', () => {
