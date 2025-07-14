@@ -31,6 +31,8 @@
   "license": "MIT",
   "dependencies": {
     "@paralleldrive/cuid2": "^2.2.2",
+    "@types/bson": "^4.0.5",
+    "bson": "^6.10.4",
     "buffer": "^6.0.3",
     "slugid": "^5.0.1",
     "uuid": "^11.1.0"
