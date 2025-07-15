@@ -99,7 +99,7 @@ The `ObjectId` class is re-exported from the official `bson` library. It is full
 
 | Platform              | Supported |
 |-----------------------|-----------|
-| Node.js               | ✅        |
+| Node.js               | ✅ >=16.20.1 |
 | Browser (via bundler) | ✅        |
 | CommonJS (`require`)  | ✅        |
 | ESM (`import`)        | ✅        |
